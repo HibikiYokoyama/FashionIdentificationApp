@@ -9,7 +9,7 @@ import torch.nn as nn
 
 img = Image.open('icon.png')
 
-#ページコンフィグ
+# ページコンフィグ
 st.set_page_config(
      page_title="服の種類分類アプリ",
      page_icon=img,
