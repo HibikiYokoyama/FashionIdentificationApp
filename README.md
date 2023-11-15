@@ -1,4 +1,4 @@
-# 服の識別アプリ
+# 服の種類分類アプリ
 ## 概要
 アップロードされた服の画像を分析して、その服の種類を予測します。
 
@@ -12,7 +12,25 @@
 33: スカート,34: スウェットパンツ,35: スウェットショーツ,36: トランクス,37: カフタン,38: コート,
 39: カバーアップ,40: ドレス,41: ジャンプスーツ,42: カフタン,43: 着物,44: ワンジー,45: ローブ,46: ロンパース
 
-##実際の実行画面
+## 実際の実行画面
+- 予測される服の種類の上位5件を表示している
 <img width="916" alt="image" src="https://github.com/HibikiYokoyama/FashionIdentificationApp/assets/89569080/3b565038-2c45-43f4-9ac7-b208e85cb9de">
 
 ## 各コードの概要
+- run_app.py  
+-アプリ実行用プログラム  
+- train_model.py  
+-モデル訓練用プログラム  
+-データセットを配置すると動く
+
+## 使用ライブラリ
+* streamlit
+* torch
+* torchvision
+* PIL (Python Imaging Library)
+* tqdm
+
+## 実行コマンド
+```bash
+streamlit run run_app.py
+```
