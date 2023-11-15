@@ -14,21 +14,24 @@
 
 ## 実際の実行画面
 - 予測される服の種類の上位5件を表示している
-<img width="916" alt="image" src="https://github.com/HibikiYokoyama/FashionIdentificationApp/assets/89569080/3b565038-2c45-43f4-9ac7-b208e85cb9de">
+<img width="509" alt="image" src="https://github.com/HibikiYokoyama/FashionIdentificationApp/assets/89569080/f68dce0d-c062-4701-8ca8-700d2abb10f0">
 
 ## 各コードの概要
-- run_app.py  
+- **run_app.py**  
 -アプリ実行用プログラム  
-- train_model.py  
+- **train_model.py**  
 -モデル訓練用プログラム  
 -データセットを配置すると動く
 
+## モデルの訓練に使用したデータセット
+-  **DeepFashion**: https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html
+
 ## 使用ライブラリ
-* streamlit
-* torch
-* torchvision
-* PIL (Python Imaging Library)
-* tqdm
+- **streamlit**
+- **torch**
+- **torchvision**
+- **PIL**
+- **tqdm**
 
 ## 実行コマンド
 ```bash
