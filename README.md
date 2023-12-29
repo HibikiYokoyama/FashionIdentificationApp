@@ -14,8 +14,7 @@
 
 ## 実際の実行画面
 - 予測される服の種類の上位5件を表示している
-<img width="509" alt="image" src="https://github.com/HibikiYokoyama/FashionIdentificationApp/assets/89569080/f68dce0d-c062-4701-8ca8-700d2abb10f0">
-![demogif](https://github.com/HibikiYokoyama/FashionIdentificationApp/assets/89569080/438c6b75-a7c1-4af5-8d98-7d0f033ebb76)
+<img src="https://github.com/HibikiYokoyama/FashionIdentificationApp/assets/89569080/438c6b75-a7c1-4af5-8d98-7d0f033ebb76" width="400">
 
 
 ## 各コードの概要
