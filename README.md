@@ -28,11 +28,11 @@
 -  **DeepFashion**: https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion.html
 
 ## 使用ライブラリ
-- **streamlit**
-- **torch**
-- **torchvision**
-- **PIL**
-- **tqdm**
+- **streamlit 1.28.0**
+- **torch 2.1.0**
+- **torchvision 0.16.0**
+- **PIL 10.1.0**
+- **tqdm 4.66.1**
 
 ## 実行コマンド
 ```bash
