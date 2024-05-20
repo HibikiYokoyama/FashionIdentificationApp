@@ -9,17 +9,14 @@ import torch.nn as nn
 
 img = Image.open('icon.png')
 
-# ページコンフィグ
 st.set_page_config(
      page_title="服の種類分類アプリ",
      page_icon=img,
      layout="wide",
  )
 
-# Streamlit UIの設定
 st.title('服の種類分類アプリ')
 
-# アプリ説明
 st.markdown("""
     <style>
     .gray-background {
@@ -41,7 +38,6 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# モデルの再構築
 class FashionModel(models.ResNet):
     def __init__(self, num_classes):
         super(FashionModel, self).__init__(BasicBlock, [2, 2, 2, 2])
@@ -49,18 +45,15 @@ class FashionModel(models.ResNet):
 
 
 try:
-    # モデルの読み込み
-    model = FashionModel(num_classes=46)  # num_classes はラベルの数に応じて変更
+    model = FashionModel(num_classes=46)
     model.load_state_dict(torch.load('fashion_model_epoch_5.pth', map_location=torch.device('cpu')))
     model.eval()
 except Exception as e:
     st.error(f"モデルの読み込み中にエラーが発生しました: {e}")
     st.stop()
 
-# ファイルアップロード
 uploaded_file = st.file_uploader("画像をアップロードしてください", type=["png", "jpg", "jpeg", "webp"])
 
-# ラベルと日本語カテゴリ名のマッピング
 label_names = {
     0: "アノラック",
     1: "ブレザー",
@@ -111,7 +104,6 @@ label_names = {
 }
 
 
-# トランスフォームの定義
 transform = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
@@ -121,22 +113,18 @@ transform = transforms.Compose([
 
 if uploaded_file is not None:
     try:
-        # 画像の読み込み
         image = Image.open(uploaded_file).convert('RGB')
         st.image(image, caption="アップロードされた画像", width=300)
 
-        # 画像のトランスフォーム
         image = transform(image)
-        image = image.unsqueeze(0)  # バッチ次元の追加
+        image = image.unsqueeze(0)
 
-        # モデルでの予測
         with torch.no_grad():
             pred = model(image)
-            top_preds = torch.topk(pred, 5)  # 上位5つの予測
+            top_preds = torch.topk(pred, 5)
     except Exception as e:
         st.error(f"予測中にエラーが発生しました: {e}")
     else:
-        # 予測が利用可能かどうかのチェック
         if top_preds.indices.numel() > 0:
             st.write('予測された上位5つのカテゴリ:')
             for i in range(top_preds.indices.size(1)):
@@ -144,7 +132,6 @@ if uploaded_file is not None:
                 label_name = label_names[label_index]
                 probability = F.softmax(top_preds.values, dim=1)[0, i].item() * 100  # logitsから確率への変換、およびパーセンテージへの変換
 
-                # ランキング表示
                 st.markdown(f"""
                 <div style="margin-bottom: 5px;">
                     <div style="font-size: 16px; font-weight: bold; color: {'#4CAF50' if i == 0 else '#2196F3' if i == 1 else '#FFC107' if i == 2 else '#FF5722' if i == 3 else '#9E9E9E'};">
